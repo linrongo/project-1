@@ -19,13 +19,13 @@ public class HammingDist{
 	
 	public void readFile() throws IOException {
 		BufferedReader profile = new BufferedReader(new FileReader("Mesonet.txt"));
-       	String line = profile.readLine();
+       	String line;
        	String stid;
        	String[] info;
        	
-      //skip next 4 lines
+      //skip next 5 lines
 		final int limit = 6;
-		for(int i = 1; i < limit; i++) {			
+		for(int i = 0; i < limit; i++) {			
 	       	line = profile.readLine();
 		}
 		
@@ -33,11 +33,10 @@ public class HammingDist{
 	    while ( line != null) {
 	    	
 	      // Get STID from the line
-	    	info = line.split("      ");
+	    	line = line.trim();
+	    	info = line.split("\\s+");
 	    	stid = info[0];
-	    	
-	      // Trim down spaces
-	       	stid = stid.replaceAll(" ","");
+	    		       
 	       	
 	      // Add it to the array of STIDs and expand if full       		
 	       	if (placement == capacity) {
